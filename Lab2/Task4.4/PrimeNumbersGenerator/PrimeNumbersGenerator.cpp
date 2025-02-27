@@ -1,20 +1,38 @@
-﻿// PrimeNumbersGenerator.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
+﻿#include "GeneratePrimeNumbers.h"
+#include <ctime>
 #include <iostream>
+#include <iterator>
+#include <string>
 
-int main()
+struct Args
 {
-    std::cout << "Hello World!\n";
+	int upperBound;
+};
+
+Args ParseArgs(int argc, char* argv[])
+{
+	if (argc != 2)
+	{
+		throw std::runtime_error("Invalid arguments count\nUsage: PrintNumbers.exe <upperBound>\n");
+	}
+	int upperBound = std::stoi(argv[1]);
+	return Args{ upperBound };
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+int main(int argc, char* argv[])
+{
+	try
+	{
+		clock_t start = clock();
+		Args args = ParseArgs(argc, argv);
+		std::set<int> primeNums = GeneratePrimeNumbersSet(args.upperBound);
+		std::cout << primeNums.size() << "\n";
+		std::copy(primeNums.begin(), primeNums.end(), std::ostream_iterator<int>(std::cout, " "));
+		std::cout << "\n"
+				  << (clock() - start) / (float)CLOCKS_PER_SEC << "\n";
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << "\n";
+	}
+}

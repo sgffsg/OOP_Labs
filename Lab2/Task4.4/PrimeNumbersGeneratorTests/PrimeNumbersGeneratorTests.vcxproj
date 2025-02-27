@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{63c9e0c0-a129-499d-9d32-ced095048bab}</ProjectGuid>
-    <RootNamespace>PrimeNumbersGenerator</RootNamespace>
+    <ProjectGuid>{4e53e593-6697-4c78-9b90-8da984be13c1}</ProjectGuid>
+    <RootNamespace>PrimeNumbersGeneratorTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratePrimeNumbers.cpp" />
-    <ClCompile Include="PrimeNumbersGenerator.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GeneratePrimeNumbers.h" />
+    <ClCompile Include="PrimeNumbersGeneratorTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
