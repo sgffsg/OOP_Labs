@@ -1,9 +1,0 @@
-// Файлы указаний помогают среде IDE Visual Studio интерпретировать идентификаторы Visual C++
-// (например, имена функций и макросов).
-// Дополнительные сведения: https://go.microsoft.com/fwlink/?linkid=865984
-#define CHECK(__VA_ARGS__) INTERNAL_CATCH_TEST( "CHECK", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
-#define CHECK(__VA_ARGS__) (void)(0)
-#define THEN(desc) INTERNAL_CATCH_DYNAMIC_SECTION( "     Then: " << desc )
-#define THEN(desc)
-#define CHECK_THROWS_WITH(expr, matcher) INTERNAL_CATCH_THROWS_STR_MATCHES( "CHECK_THROWS_WITH", Catch::ResultDisposition::ContinueOnFailure, matcher, expr )
-#define CHECK_THROWS_WITH(expr, matcher) (void)(0)

@@ -1,5 +1,0 @@
-Crypt.exe crypt Crypt.exe Crypt1.exe 1
-Crypt.exe decrypt Crypt1.exe Crypt2.exe 1
-Crypt2.exe crypt input.txt crypted.txt 1
-Crypt2.exe decrypt crypted.txt out.txt 1
-fc input.txt out.txt
