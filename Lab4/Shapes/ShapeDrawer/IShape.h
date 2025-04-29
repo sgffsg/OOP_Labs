@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "ICanvasDrawable.h"
 
-class IShape : public ICanvasDrawable
+class IShape: public ICanvasDrawable
 {
 public:
 	virtual ~IShape() = default;

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "CCanvas.h"
 #include "CCircle.h"
 #include "CLineSegment.h"
 #include "CRectangle.h"

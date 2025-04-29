@@ -46,17 +46,7 @@ CPoint CRectangle::GetRightBottom() const
 	return { m_leftTopPoint.m_x + m_width, m_leftTopPoint.m_y + m_height };
 }
 
-double CRectangle::GetHeight() const
-{
-	return m_height;
-}
-
-double CRectangle::GetWidth() const
-{
-	return m_width;
-}
-
-void CRectangle::Draw(std::shared_ptr<ICanvas> canvas)
+void CRectangle::Draw(ICanvas* canvas)
 {
 	CPoint rightTop(GetRightBottom().m_x, m_leftTopPoint.m_y);
 	CPoint leftBottom(m_leftTopPoint.m_x, GetRightBottom().m_y);
@@ -67,4 +57,14 @@ void CRectangle::Draw(std::shared_ptr<ICanvas> canvas)
 	canvas->DrawLine(rightTop, GetRightBottom(), GetOutlineColor());
 	canvas->DrawLine(GetRightBottom(), leftBottom, GetOutlineColor());
 	canvas->DrawLine(leftBottom, m_leftTopPoint, GetOutlineColor());
+}
+
+double CRectangle::GetHeight() const
+{
+	return m_height;
+}
+
+double CRectangle::GetWidth() const
+{
+	return m_width;
 }

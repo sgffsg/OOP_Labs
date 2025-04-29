@@ -1,14 +1,12 @@
-﻿#ifndef CCANVAS_H
-#define CCANVAS_H
+﻿#pragma once
 
 #include "ICanvas.h"
+#include "SFML/Graphics.hpp"
 
 class CCanvas : public ICanvas
 {
 public:
-    // Простые указатели
-    // Не нужно зависеть от RenderWindow а от RenderTarget
-    CCanvas(std::shared_ptr<sf::RenderTarget> window) : m_window(std::move(window)) {};
+    CCanvas(sf::RenderTarget* window) : m_window(std::move(window)) {};
 
     void DrawLine(CPoint from, CPoint to, uint32_t lineColor);
 
@@ -18,8 +16,5 @@ public:
 
     void FillCircle(CPoint center, double radius, uint32_t fillColor);
 private:
-	std::shared_ptr<sf::RenderTarget> m_window;
+	sf::RenderTarget* m_window;
 };
-
-
-#endif //CCANVAS_H

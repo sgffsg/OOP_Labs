@@ -61,16 +61,16 @@ CPoint CTriangle::GetVertex3() const
 	return m_vertex3;
 }
 
-double CTriangle::GetTriangleSideLength(const CPoint& vertex1, const CPoint& vertex2)
-{
-	return std::sqrt(std::pow(vertex1.m_x - vertex2.m_x, 2) + std::pow(vertex1.m_y - vertex2.m_y, 2));
-}
-
-void CTriangle::Draw(std::shared_ptr<ICanvas> canvas)
+void CTriangle::Draw(ICanvas* canvas)
 {
 	canvas->FillPolygon({ m_vertex1, m_vertex2, m_vertex3 }, GetOutlineColor(), GetFillColor());
 
 	canvas->DrawLine(m_vertex1, m_vertex2, GetOutlineColor());
 	canvas->DrawLine(m_vertex2, m_vertex3, GetOutlineColor());
 	canvas->DrawLine(m_vertex3, m_vertex1, GetOutlineColor());
+}
+
+double CTriangle::GetTriangleSideLength(const CPoint& vertex1, const CPoint& vertex2)
+{
+	return std::sqrt(std::pow(vertex1.m_x - vertex2.m_x, 2) + std::pow(vertex1.m_y - vertex2.m_y, 2));
 }

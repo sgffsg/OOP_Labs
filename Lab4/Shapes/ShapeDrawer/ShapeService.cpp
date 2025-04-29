@@ -1,8 +1,15 @@
 #include "ShapeService.h"
+#include <algorithm>
+#include "IShape.h"
+#include <SFML/Window/Window.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "CCanvas.h"
+
+const int WINDOW_WIDTH = 1280;
+const int WINDOW_HEIGHT = 720;
 
 void ShapeService::CreateShape(const std::string& line)
 {
-	IShape* shape;
 	std::istringstream iss(line);
 	std::string shapeName;
 	iss >> shapeName;
@@ -25,25 +32,69 @@ void ShapeService::CreateShape(const std::string& line)
 	}
 }
 
+std::vector<IShape*> ShapeService::GetShapes()
+{
+	return m_shapes;
+}
+
 IShape* ShapeService::GetShapeWithMaxArea() const
 {
-	return nullptr;
+	if (m_shapes.empty())
+	{
+		return nullptr;
+	}
+
+	auto result = *std::max_element(m_shapes.begin(), m_shapes.end(),
+		[](const auto& first, const auto& second) {
+			return first->GetArea() < second->GetArea();
+		});
+
+	return result;
 }
 
 IShape* ShapeService::GetShapeWithMinPerimeter() const
 {
-	return nullptr;
-}
+	if (m_shapes.empty())
+	{
+		return nullptr;
+	}
+	auto result = *std::min_element(m_shapes.begin(), m_shapes.end(),
+		[](const auto& first, const auto& second) {
+			return first->GetPerimeter() < second->GetPerimeter();
+		});
 
-std::vector<IShape> ShapeService::GetShapes()
-{
-	return std::vector<IShape>();
+	
+	return result;
 }
 
 void ShapeService::RenderShapes()
 {
-}
+	auto window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),"DRAWER");
+	m_canvas = new CCanvas(window);
 
+	while (window->isOpen())
+	{
+		sf::Event event{};
+		while (window->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window->close();
+			}
+			else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+			{
+				window->close();
+			}
+		}
+		window->clear(sf::Color::White);
+
+		for (auto const& shape : m_shapes)
+		{
+			shape->Draw(m_canvas);
+		}
+		window->display();
+	}
+}
 
 void ShapeService::CreateLine(std::istringstream& iss)
 {
@@ -62,7 +113,7 @@ void ShapeService::CreateLine(std::istringstream& iss)
 		throw std::invalid_argument("Invalid color values");
 	}
 
-	m_shapes.emplace_back(CLineSegment(startPoint, endPoint, outlineColor));
+	m_shapes.emplace_back(new CLineSegment(startPoint, endPoint, outlineColor));
 }
 
 void ShapeService::CreateCircle(std::istringstream& iss)
@@ -81,7 +132,7 @@ void ShapeService::CreateCircle(std::istringstream& iss)
 		throw std::invalid_argument("Invalid color values");
 	}
 
-	m_shapes.emplace_back(CCircle(centerPoint, radius, outlineColor, fillColor));
+	m_shapes.emplace_back(new CCircle(centerPoint, radius, outlineColor, fillColor));
 }
 
 void ShapeService::CreateTriangle(std::istringstream& iss)
@@ -103,7 +154,7 @@ void ShapeService::CreateTriangle(std::istringstream& iss)
 		throw std::invalid_argument("Invalid color values");
 	}
 
-	m_shapes.emplace_back(CTriangle(vertex1, vertex2, vertex3, outlineColor, fillColor));
+	m_shapes.emplace_back(new CTriangle(vertex1, vertex2, vertex3, outlineColor, fillColor));
 }
 
 void ShapeService::CreateRectangle(std::istringstream& iss)
@@ -122,5 +173,5 @@ void ShapeService::CreateRectangle(std::istringstream& iss)
 		throw std::invalid_argument("Invalid color values");
 	}
 
-	m_shapes.emplace_back(CRectangle(leftTopPoint, height, width, outlineColor, fillColor));
+	m_shapes.emplace_back(new CRectangle(leftTopPoint, height, width, outlineColor, fillColor));
 }

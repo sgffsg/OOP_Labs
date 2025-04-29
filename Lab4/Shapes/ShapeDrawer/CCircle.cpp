@@ -34,7 +34,17 @@ double CCircle::GetPerimeter() const
 	return 2 * std::numbers::pi * m_radius;
 }
 
-void CCircle::Draw(std::shared_ptr<ICanvas> canvas)
+CPoint CCircle::GetCenter() const
+{
+	return m_center;
+}
+
+double CCircle::GetRadius() const
+{
+	return m_radius;
+}
+
+void CCircle::Draw(ICanvas* canvas)
 {
 	canvas->DrawCircle(m_center, m_radius, GetOutlineColor());
 	canvas->FillCircle(m_center, m_radius, GetFillColor());

@@ -13,92 +13,83 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Canvas">
-      <UniqueIdentifier>{da379a04-bf8f-498c-9a59-68a9417880e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Shape">
-      <UniqueIdentifier>{20174ed3-1503-4d22-b538-0757a4c59a42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Canvas">
-      <UniqueIdentifier>{e18e0e67-4d1c-4c14-9c87-04c46f4e0468}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="TestFigures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CCanvas.cpp">
+    <ClCompile Include="..\ShapeDrawer\CCanvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CCircle.cpp">
+    <ClCompile Include="..\ShapeDrawer\CCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLineSegment.cpp">
+    <ClCompile Include="..\ShapeDrawer\CLineSegment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CPoint.cpp">
+    <ClCompile Include="..\ShapeDrawer\CPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CRectangle.cpp">
+    <ClCompile Include="..\ShapeDrawer\CRectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTriangle.cpp">
+    <ClCompile Include="..\ShapeDrawer\CTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="..\ShapeDrawer\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeController.cpp">
+    <ClCompile Include="..\ShapeDrawer\ShapeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeService.cpp">
+    <ClCompile Include="..\ShapeDrawer\ShapeService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SolidShape.cpp">
+    <ClCompile Include="..\ShapeDrawer\SolidShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCanvas.h">
-      <Filter>Header Files\Canvas</Filter>
-    </ClInclude>
-    <ClInclude Include="ICanvas.h">
-      <Filter>Header Files\Canvas</Filter>
-    </ClInclude>
-    <ClInclude Include="ICanvasDrawable.h">
-      <Filter>Header Files\Canvas</Filter>
-    </ClInclude>
-    <ClInclude Include="CCircle.h">
+    <ClInclude Include="..\ShapeDrawer\CCanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLineSegment.h">
+    <ClInclude Include="..\ShapeDrawer\CCircle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPoint.h">
+    <ClInclude Include="..\ShapeDrawer\CLineSegment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CRectangle.h">
+    <ClInclude Include="..\ShapeDrawer\CPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CTriangle.h">
+    <ClInclude Include="..\ShapeDrawer\CRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IShape.h">
+    <ClInclude Include="..\ShapeDrawer\CTriangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISolidShape.h">
+    <ClInclude Include="..\ShapeDrawer\ICanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="..\ShapeDrawer\ICanvasDrawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeController.h">
+    <ClInclude Include="..\ShapeDrawer\IShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeService.h">
+    <ClInclude Include="..\ShapeDrawer\ISolidShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SolidShape.h">
+    <ClInclude Include="..\ShapeDrawer\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShapeDrawer\ShapeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShapeDrawer\ShapeService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShapeDrawer\SolidShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

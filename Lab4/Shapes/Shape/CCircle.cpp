@@ -33,3 +33,13 @@ double CCircle::GetPerimeter() const
 {
 	return 2 * std::numbers::pi * m_radius;
 }
+
+CPoint CCircle::GetCenter() const
+{
+	return m_center;
+}
+
+double CCircle::GetRadius() const
+{
+	return m_radius;
+}

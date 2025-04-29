@@ -1,23 +1,18 @@
 #include "ShapeController.h"
-#include "ShapeManager.h"
-
-
+#include "ShapeService.h"
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
     try
     {
-        ShapeManager shapeService;
-        ShapeController shapeController = 
-        { 
-            std::cin, 
-            std::cout, 
-            shapeService 
-        };
+        ShapeService shapeService;
+		ShapeController shapeController(std::cin, std::cout, shapeService);
+		
 
         shapeController.ReadShapes();
-        shapeController.ShapeMaxArea();
-        shapeController.ShapeMinPerimeter();
+        shapeController.GetShapeMaxArea();
+        shapeController.GetShapeMinPerimeter();
         shapeController.DrawShapes();
     }
     catch (const std::exception& e)

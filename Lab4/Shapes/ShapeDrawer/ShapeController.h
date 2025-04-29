@@ -1,31 +1,29 @@
-#ifndef SHAPECONTROLLER_H
-#define SHAPECONTROLLER_H
+#pragma once
+#include <string>
+#include <fstream>
+#include "Shape.h"
+#include "ShapeService.h"
+#include <vector>
 
-#include "ShapeManager.h"
-#include "utils.h"
 
 class ShapeController
 {
 public:
-	ShapeController(std::istream& in, std::ostream& out, ShapeManager& shapeService)
-		: m_in(in)
-		, m_out(out)
-		, m_shapeManager(shapeService)
+	ShapeController(std::istream& input, std::ostream& output, ShapeService shapeService)
+		: m_input(input)
+		, m_output(output)
+		, m_shapeService(shapeService)
 	{
 	}
 
 	void ReadShapes();
-
-	void ShapeMaxArea() const;
-
-	void ShapeMinPerimeter() const;
-
+	void PrintShapes();
+	void GetShapeMaxArea() const;
+	void GetShapeMinPerimeter() const;
 	void DrawShapes();
 
 private:
-	std::istream& m_in;
-	std::ostream& m_out;
-	ShapeManager& m_shapeManager;
+	std::istream& m_input;
+	std::ostream& m_output;
+	ShapeService m_shapeService;
 };
-
-#endif // SHAPECONTROLLER_H

@@ -1,41 +1,49 @@
 #include "ShapeController.h"
+#include <algorithm>
 
 void ShapeController::ReadShapes()
 {
-    std::string line;
-    while (std::getline(m_in, line))
-    {
-        if (line.empty())
-        {
-            break;
-        }
+	std::string line;
+	while (std::getline(m_input, line))
+	{
+		if (line.empty())
+		{
+			break;
+		}
 
-        m_shapeManager.ConstructShape(line);
-    }
+		m_shapeService.CreateShape(line);
+	}
+	PrintShapes();
 }
 
-void ShapeController::ShapeMaxArea() const
+void ShapeController::PrintShapes()
 {
-    std::shared_ptr<IShape> shape = m_shapeManager.GetShapeWithMaxArea();
-
-    if (shape != nullptr)
-    {
-		std::cout << "Shape with max area:\n" << shape->ToString() << std::endl;
-    }
+	std::vector<IShape*> shapes = m_shapeService.GetShapes();
+	for (int i = 0; i < shapes.size(); i++)
+		m_output << shapes[i]->ToString() << std::endl;
 }
 
-
-void ShapeController::ShapeMinPerimeter() const
+void ShapeController::GetShapeMaxArea() const
 {
-    std::shared_ptr<IShape> shape = m_shapeManager.GetShapeWithMinPerimeter();
+	IShape* shape = m_shapeService.GetShapeWithMaxArea();
 
-    if (shape != nullptr)
-    {
-        std::cout << "Shape with min perimeter:\n" << shape->ToString() << std::endl;
-    }
+	if (shape != nullptr)
+	{
+		m_output << "Shape with max area:\n" << shape->ToString() << std::endl;
+	}
+}
+
+void ShapeController::GetShapeMinPerimeter() const
+{
+	IShape* shape = m_shapeService.GetShapeWithMinPerimeter();
+
+	if (shape != nullptr)
+	{
+		m_output << "Shape with min perimeter:\n" << shape->ToString() << std::endl;
+	}
 }
 
 void ShapeController::DrawShapes()
 {
-    m_shapeManager.RenderShapes();
+	m_shapeService.RenderShapes();
 }

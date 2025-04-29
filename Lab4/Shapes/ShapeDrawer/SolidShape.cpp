@@ -8,7 +8,7 @@ SolidShape::SolidShape(std::string type, uint32_t outlineColor, uint32_t fillCol
 
 uint32_t SolidShape::GetFillColor() const
 {
-	return 0;
+	return m_fillColor;
 }
 
 std::string SolidShape::ToString() const

@@ -1,10 +1,8 @@
-﻿#ifndef ICANVAS_H
-#define ICANVAS_H
+﻿#pragma once
 
 #include "CPoint.h"
-#include "utils.h"
+#include <vector>
 
-// Выяснить чего здесь не хватает
 class ICanvas
 {
 public:
@@ -16,5 +14,3 @@ public:
 
     virtual void FillCircle(CPoint center, double radius, uint32_t fillColor) = 0;
 };
-
-#endif //ICANVAS_H
