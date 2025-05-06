@@ -8,7 +8,7 @@ void CCanvas::DrawLine(CPoint from, CPoint to, uint32_t lineColor)
 	line[0].color = sf::Color(lineColor);
 	line[1].color = sf::Color(lineColor);
 
-	m_window->draw(line);
+	m_window.draw(line);
 }
 
 void CCanvas::FillPolygon(std::vector<CPoint> points, uint32_t lineColor, uint32_t fillColor)
@@ -31,7 +31,7 @@ void CCanvas::FillPolygon(std::vector<CPoint> points, uint32_t lineColor, uint32
 	polygon.setOutlineColor(sf::Color(lineColor));
 	polygon.setFillColor(sf::Color(fillColor));
 
-	m_window->draw(polygon);
+	m_window.draw(polygon);
 }
 
 void CCanvas::DrawCircle(CPoint center, double radius, uint32_t lineColor)
@@ -42,7 +42,7 @@ void CCanvas::DrawCircle(CPoint center, double radius, uint32_t lineColor)
 	circle.setOutlineColor(sf::Color(lineColor));
 	circle.setOutlineThickness(2);
 
-	m_window->draw(circle);
+	m_window.draw(circle);
 }
 
 void CCanvas::FillCircle(CPoint center, double radius, uint32_t fillColor)
@@ -52,5 +52,5 @@ void CCanvas::FillCircle(CPoint center, double radius, uint32_t fillColor)
 	circle.setFillColor(sf::Color(fillColor));
 	circle.setOutlineColor(sf::Color::Transparent);
 
-	m_window->draw(circle);
+	m_window.draw(circle);
 }

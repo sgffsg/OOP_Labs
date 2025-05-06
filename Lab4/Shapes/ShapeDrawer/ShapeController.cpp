@@ -13,7 +13,6 @@ void ShapeController::ReadShapes()
 
 		m_shapeService.CreateShape(line);
 	}
-	PrintShapes();
 }
 
 void ShapeController::PrintShapes()
@@ -23,9 +22,9 @@ void ShapeController::PrintShapes()
 		m_output << shapes[i]->ToString() << std::endl;
 }
 
-void ShapeController::GetShapeMaxArea() const
+void ShapeController::PrintShapeWithMaxArea() const
 {
-	IShape* shape = m_shapeService.GetShapeWithMaxArea();
+	IShape* shape = m_shapeService.GetShapeMaxArea();
 
 	if (shape != nullptr)
 	{
@@ -33,9 +32,9 @@ void ShapeController::GetShapeMaxArea() const
 	}
 }
 
-void ShapeController::GetShapeMinPerimeter() const
+void ShapeController::PrintShapeWithMinPerimeter() const
 {
-	IShape* shape = m_shapeService.GetShapeWithMinPerimeter();
+	IShape* shape = m_shapeService.GetShapeMinPerimeter();
 
 	if (shape != nullptr)
 	{

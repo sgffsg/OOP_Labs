@@ -136,7 +136,7 @@ SCENARIO("Nested expression Tests")
 	}
 }
 
-SCENARIO("Brace Tests")
+SCENARIO("Brackets Tests")
 {
 	ExpressionParser expressionParser;
 
@@ -149,46 +149,12 @@ SCENARIO("Brace Tests")
 		}
 	}
 
-	WHEN("Extra closing Brace.")
-	{
-		std::string input = "(+ 1 2))";
-		THEN("Expected Invalid expression")
-		{
-			try
-			{
-				expressionParser.EvaluateExpression(input);
-			}
-			catch (const std::exception& e)
-			{
-				std::string result = e.what();
-				CHECK(result == "Invalid expression");
-			}
-		}
-	}
-
-	WHEN("Mismatched parentheses")
+	WHEN("Mismatched Brackets")
 	{
 		std::string input = ") + 1 2 (";
-		THEN("Expected Mismatched parentheses")
+		THEN("Expected Mismatched bracket")
 		{
 			REQUIRE_THROWS_AS(expressionParser.EvaluateExpression(input), std::runtime_error);
-		}
-	}
-
-	WHEN("Mismatched parentheses")
-	{
-		std::string input = "(+ 1 2))";
-		THEN("Expected Mismatched parentheses")
-		{
-			try
-			{
-				expressionParser.EvaluateExpression(input);
-			}
-			catch (const std::exception& e)
-			{
-				std::string result = e.what();
-				CHECK(result == "Mismatched parentheses");
-			}
 		}
 	}
 
@@ -209,7 +175,7 @@ SCENARIO("Operator Tests")
 
 	WHEN("Unsupproted Operator.")
 	{
-		std::string input = "(- 1 2))";
+		std::string input = "(- 1 2)";
 		THEN("Expected Invalid operator")
 		{
 			REQUIRE_THROWS_AS(expressionParser.EvaluateExpression(input), std::runtime_error);

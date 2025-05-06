@@ -1,8 +1,11 @@
 #include <format>
+#include <fstream>
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <queue>
+#include <thread>
+#include <vector>
+#include <sstream>
+
 
 const int MAX_WIDTH = 100;
 const int MAX_HEIGHT = 100;

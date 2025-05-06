@@ -7,6 +7,8 @@
 #include "IShape.h"
 #include <vector>
 #include "CCanvas.h"
+#include "ShapeDrawer.h"
+#include "ShapeCreator.h"
 
 class ShapeService
 {
@@ -14,17 +16,15 @@ public:
 	void CreateShape(const std::string& line);
 	std::vector<IShape*> GetShapes();
 
-	IShape* GetShapeWithMaxArea() const;
-	IShape* GetShapeWithMinPerimeter() const;
+	IShape* GetShapeMaxArea() const;
+	IShape* GetShapeMinPerimeter() const;
 
 	void RenderShapes();
 
 private:
+	ShapeDrawer m_shapeDrawer;
+	ShapeCreator m_shapeCreator;
 	std::vector<IShape*> m_shapes = {};
-	CCanvas* m_canvas;
-
-	void CreateLine(std::istringstream& iss);
-	void CreateCircle(std::istringstream& iss);
-	void CreateTriangle(std::istringstream& iss);
-	void CreateRectangle(std::istringstream& iss);
 };
+
+// TODO: Вынести реализацию отрисовки, чтобы сервис не знал об окне

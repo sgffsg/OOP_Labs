@@ -139,14 +139,12 @@ SCENARIO("Shapes Service Test")
 
 		THEN("Unknown figure test")
 		{
-			shapeService.CreateShape("octangle 0 0 0 3 4 0 0xFFFFFF 0x000000");
-			REQUIRE(shapeService.GetShapes().size() == 0);
+			REQUIRE_THROWS_AS(shapeService.CreateShape("proctangle 0 0 0 3 4 0 0xFFFFFF 0x000000"), std::runtime_error);
 		}
 
 		THEN("Mismatch params test")
 		{
-			shapeService.CreateShape("octangle");
-			REQUIRE(shapeService.GetShapes().size() == 0);
+			REQUIRE_THROWS_AS(shapeService.CreateShape("octangle"), std::runtime_error);
 		}
 
 		THEN("Valid Create line test")
@@ -229,12 +227,12 @@ SCENARIO("Shapes Service Test")
 			shapeService.CreateShape("triangle 0 0 0 3 4 0 0xFFFFFF 0x000000");
 
 			auto maxShape = shapeService.GetShapes()[0];
-			REQUIRE(maxShape == shapeService.GetShapeWithMaxArea());
+			REQUIRE(maxShape == shapeService.GetShapeMaxArea());
 		}
 
 		THEN("Null test")
 		{
-			REQUIRE(nullptr == shapeService.GetShapeWithMaxArea());
+			REQUIRE(nullptr == shapeService.GetShapeMaxArea());
 		}
 	}
 
@@ -248,12 +246,12 @@ SCENARIO("Shapes Service Test")
 			shapeService.CreateShape("triangle 0 0 0 3 4 0 0xFFFFFF 0x000000");
 
 			auto minShape = shapeService.GetShapes()[1];
-			REQUIRE(minShape == shapeService.GetShapeWithMinPerimeter());
+			REQUIRE(minShape == shapeService.GetShapeMinPerimeter());
 		}
 
 		THEN("Null test")
 		{
-			REQUIRE(nullptr == shapeService.GetShapeWithMinPerimeter());
+			REQUIRE(nullptr == shapeService.GetShapeMinPerimeter());
 		}
 	}
 }

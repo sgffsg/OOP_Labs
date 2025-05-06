@@ -15,64 +15,77 @@ int ExpressionParser::EvaluateExpression(const std::string& expression)
 		}
 		else if (token == ")")
 		{
-			if (stack.empty())
-			{
-				throw std::runtime_error("Mismatched parentheses");
-			}
-			std::vector<std::string> current = stack.top();
-			stack.pop();
-
-			if (current.empty())
-			{
-				throw std::runtime_error("Empty expression");
-			}
-
-			std::string op = current[0];
-			if (!IsOperator(op))
-			{
-				throw std::runtime_error("Invalid operator");
-			}
-
-			std::vector<int> args;
-			for (size_t j = 1; j < current.size(); ++j)
-			{
-				try
-				{
-					args.push_back(stoi(current[j]));
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw std::runtime_error("Invalid argument");
-				}
-				catch (const std::out_of_range&)
-				{
-					throw std::runtime_error("Argument out of range");
-				}
-			}
-
-			int result = ApplyOperator(op[0], args);
+			int result = HandleCloseBracket(stack);
 			if (stack.empty())
 			{
 				return result;
 			}
-			else
-			{
-				stack.top().push_back(std::to_string(result));
-			}
+			stack.top().push_back(std::to_string(result));
 		}
 		else
 		{
-			if (stack.empty())
-			{
-				throw std::runtime_error("Invalid expression");
-			}
-			stack.top().push_back(token);
+			HandleToken(stack, token);
 		}
 	}
 
 	throw std::runtime_error("Invalid expression");
 }
 
+
+int ExpressionParser::HandleCloseBracket(std::stack<std::vector<std::string>>& stack)
+{
+	if (stack.empty())
+	{
+		throw std::runtime_error("Mismatched bracket");
+	}
+
+	std::vector<std::string> current = stack.top();
+	stack.pop();
+
+	if (current.empty())
+	{
+		throw std::runtime_error("Empty expression");
+	}
+
+	std::string op = current[0];
+	if (!IsOperator(op))
+	{
+		throw std::runtime_error("Invalid operator");
+	}
+
+	std::vector<int> args = ParseArguments(current);
+	return ApplyOperator(op[0], args);
+}
+
+std::vector<int> ExpressionParser::ParseArguments(const std::vector<std::string>& current)
+{
+	std::vector<int> args;
+	for (size_t j = 1; j < current.size(); ++j)
+	{
+		try
+		{
+			args.push_back(stoi(current[j]));
+		}
+		catch (const std::invalid_argument&)
+		{
+			throw std::runtime_error("Invalid argument");
+		}
+		catch (const std::out_of_range&)
+		{
+			throw std::runtime_error("Argument out of range");
+		}
+	}
+	return args;
+}
+
+void ExpressionParser::HandleToken(std::stack<std::vector<std::string>>& stack, const std::string& token)
+{
+	if (stack.empty())
+	{
+		throw std::runtime_error("Invalid expression");
+	}
+	stack.top().push_back(token);
+}
 
 std::vector<std::string> ExpressionParser::Tokenize(const std::string& expression)
 {

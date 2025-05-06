@@ -8,11 +8,10 @@ int main(int argc, char* argv[])
     {
         ShapeService shapeService;
 		ShapeController shapeController(std::cin, std::cout, shapeService);
-		
 
         shapeController.ReadShapes();
-        shapeController.GetShapeMaxArea();
-        shapeController.GetShapeMinPerimeter();
+        shapeController.PrintShapeWithMaxArea();
+		shapeController.PrintShapeWithMinPerimeter();
         shapeController.DrawShapes();
     }
     catch (const std::exception& e)

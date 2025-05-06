@@ -84,6 +84,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\OOP_Labs\SFML\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -103,6 +104,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\OOP_Labs\SFML\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\OOP_Labs\SFML\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -138,6 +140,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\OOP_Labs\SFML\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -149,6 +152,8 @@
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeController.cpp" />
+    <ClCompile Include="ShapeCreator.cpp" />
+    <ClCompile Include="ShapeDrawer.cpp" />
     <ClCompile Include="ShapeService.cpp" />
     <ClCompile Include="SolidShape.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -166,6 +171,8 @@
     <ClInclude Include="ISolidShape.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeController.h" />
+    <ClInclude Include="ShapeCreator.h" />
+    <ClInclude Include="ShapeDrawer.h" />
     <ClInclude Include="ShapeService.h" />
     <ClInclude Include="SolidShape.h" />
   </ItemGroup>

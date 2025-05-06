@@ -4,6 +4,7 @@
 #include "Shape.h"
 #include "ShapeService.h"
 #include <vector>
+#include "ShapeDrawer.h"
 
 
 class ShapeController
@@ -18,8 +19,8 @@ public:
 
 	void ReadShapes();
 	void PrintShapes();
-	void GetShapeMaxArea() const;
-	void GetShapeMinPerimeter() const;
+	void PrintShapeWithMaxArea() const;
+	void PrintShapeWithMinPerimeter() const;
 	void DrawShapes();
 
 private:
