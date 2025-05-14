@@ -285,38 +285,52 @@ std::istream& operator>>(std::istream& stream, CMyString& myString)
 	return stream;
 }
 
-CMyString::iterator CMyString::Begin()
+CMyString::iterator CMyString::begin() noexcept
 {
-	if (m_length == 0)
-	{
-		throw std::out_of_range("MyString is empty");
-	}
-	return iterator(&m_symbols[0], 0);
+	return m_symbols;
 }
 
-CMyString::iterator CMyString::End()
+CMyString::const_iterator CMyString::begin() const noexcept
 {
-	if (m_length == 0)
-	{
-		throw std::out_of_range("MyString is empty");
-	}
-	return iterator(&m_symbols[m_length - 1], m_length);
+	return m_symbols;
 }
 
-CMyString::iterator CMyString::CBegin() const
+CMyString::const_iterator CMyString::cbegin() const noexcept
 {
-	if (m_length == 0)
-	{
-		throw std::out_of_range("MyString is empty");
-	}
-	return iterator(&m_symbols[0], 0);
+	return m_symbols;
 }
 
-CMyString::iterator CMyString::CEnd() const
+CMyString::iterator CMyString::end() noexcept
 {
-	if (m_length == 0)
-	{
-		throw std::out_of_range("MyString is empty");
-	}
-	return iterator(&m_symbols[m_length - 1], m_length);
+	return m_symbols + m_length - 1;
+}
+
+CMyString::const_iterator CMyString::end() const noexcept
+{
+	return m_symbols + m_length - 1;
+}
+
+CMyString::const_iterator CMyString::cend() const noexcept
+{
+	return m_symbols + m_length - 1;
+}
+
+CMyString::reverse_iterator CMyString::rbegin() noexcept
+{
+	return reverse_iterator(end());
+}
+
+CMyString::const_reverse_iterator CMyString::crbegin() const noexcept
+{
+	return const_reverse_iterator(end());
+}
+
+CMyString::reverse_iterator CMyString::rend() noexcept
+{
+	return reverse_iterator(begin());
+}
+
+CMyString::const_reverse_iterator CMyString::crend() const noexcept
+{
+	return const_reverse_iterator(begin());
 }

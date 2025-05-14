@@ -20,8 +20,6 @@ public:
 	const char* GetStringData() const;
 	CMyString SubString(size_t start, size_t length = SIZE_MAX) const;
 	
-	
-
 	CMyString& operator=(CMyString const& other);
 	CMyString& operator=(CMyString&& other) noexcept;
 	CMyString& operator+=(CMyString const& other);
@@ -45,41 +43,25 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, CMyString const& myString);
 	friend std::istream& operator>>(std::istream& stream, CMyString& myString);
 	
-	
-	
+	using iterator = char*;
+	using const_iterator = const char*;
+	using reverse_iterator = std::reverse_iterator<iterator>;
+	using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
-	class iterator
-	{
-	public:
-		iterator(char* point, int pos)
-			: m_ptr{ point }
-			, m_pos{ pos } {};
-		char& operator*() { return *m_ptr; };
-		char* operator->() { return m_ptr; };
-		iterator& operator++()
-		{
-			++m_ptr;
-			return *this;
-		};
-		iterator operator++(int)
-		{
-			iterator temp(*this);
-			++temp;
-			return temp;
-		};
-		bool operator==(const iterator& other) { return m_ptr == other.m_ptr; }
-		bool operator!=(const iterator& other) { return m_ptr != other.m_ptr; }
+	iterator begin() noexcept;
+	const_iterator begin() const noexcept;
+	const_iterator cbegin() const noexcept;
 
-	private:
-		char* m_ptr;
-		int m_pos;
-	};
+	iterator end() noexcept;
+	const_iterator end() const noexcept;
+	const_iterator cend() const noexcept;
 
-	iterator Begin();
-	iterator End();
-	iterator CBegin() const;
-	iterator CEnd() const;
-	
+	reverse_iterator rbegin() noexcept;
+	const_reverse_iterator crbegin() const noexcept;
+
+	reverse_iterator rend() noexcept;
+	const_reverse_iterator crend() const noexcept;
+
 private:
 	size_t m_length;
 	size_t m_capacity;

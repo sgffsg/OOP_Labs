@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN 
 #include <stdexcept>
 
-#include "../../../Catch2/catch.hpp"
+#include "../../../Catch/catch.hpp"
 #include "../CMyString/CMyString.h"
 
 using std::string;
@@ -564,7 +564,7 @@ TEST_CASE("Getting iterators")
 	WHEN("Begin")
 	{
 		CMyString str("Some text");
-		auto iter = str.Begin();
+		auto iter = str.begin();
 		THEN("Will get iterator to first symbol")
 		{
 			CHECK(*iter == 'S');
@@ -574,7 +574,7 @@ TEST_CASE("Getting iterators")
 	WHEN("End")
 	{
 		CMyString str("Some text !");
-		auto iter = str.End();
+		auto iter = str.end();
 		THEN("Will get iterator to first symbol")
 		{
 			CHECK(*iter == '!');
@@ -587,7 +587,7 @@ TEST_CASE("Increament iterator")
 	WHEN("pre ++")
 	{
 		CMyString str("Some text");
-		auto iter = str.Begin();
+		auto iter = str.begin();
 		++iter;
 		THEN("New iter will point to second elt")
 		{
@@ -598,11 +598,12 @@ TEST_CASE("Increament iterator")
 	WHEN("post ++")
 	{
 		CMyString str("Some text");
-		auto iter1 = str.Begin();
-		auto iter2 = iter1++;
+		auto iter = str.begin();
+		iter++;
+
 		THEN("New iter will point to second elt")
 		{
-			CHECK(*iter2 == 'o');
+			CHECK(*iter == 'o');
 		}
 	}
 }
@@ -612,7 +613,7 @@ TEST_CASE("Change symbol by iterator")
 	WHEN("Success with not const string")
 	{
 		CMyString str("Some text");
-		auto iter = str.Begin();
+		auto iter = str.begin();
 		*iter = 'F';
 		THEN("Symbol will change")
 		{
