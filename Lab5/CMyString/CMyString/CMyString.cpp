@@ -290,22 +290,12 @@ CMyString::iterator CMyString::begin() noexcept
 	return m_symbols;
 }
 
-CMyString::const_iterator CMyString::begin() const noexcept
-{
-	return m_symbols;
-}
-
 CMyString::const_iterator CMyString::cbegin() const noexcept
 {
 	return m_symbols;
 }
 
 CMyString::iterator CMyString::end() noexcept
-{
-	return m_symbols + m_length - 1;
-}
-
-CMyString::const_iterator CMyString::end() const noexcept
 {
 	return m_symbols + m_length - 1;
 }
@@ -322,7 +312,7 @@ CMyString::reverse_iterator CMyString::rbegin() noexcept
 
 CMyString::const_reverse_iterator CMyString::crbegin() const noexcept
 {
-	return const_reverse_iterator(end());
+	return const_reverse_iterator(cend());
 }
 
 CMyString::reverse_iterator CMyString::rend() noexcept
@@ -332,5 +322,5 @@ CMyString::reverse_iterator CMyString::rend() noexcept
 
 CMyString::const_reverse_iterator CMyString::crend() const noexcept
 {
-	return const_reverse_iterator(begin());
+	return const_reverse_iterator(cbegin());
 }

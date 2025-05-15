@@ -1,7 +1,8 @@
-#include <cstdlib>
+#include "HttpUrlHandler.h"
+#include <iostream>
 
-int	main()
+int main()
 {
-	
-	return EXIT_SUCCESS;
+	HttpUrlHandler handler;
+	handler.Handle(std::cin, std::cout);
 }

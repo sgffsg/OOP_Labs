@@ -18,5 +18,22 @@
     <ClCompile Include="HttpUrlTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\HttpUrl\CHttpUrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HttpUrl\HttpUrlHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HttpUrl\CHttpUrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HttpUrl\CUrlParsingError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HttpUrl\HttpUrlHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -132,7 +132,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CHttpUrl.cpp" />
+    <ClCompile Include="HttpUrlHandler.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CHttpUrl.h" />
+    <ClInclude Include="CUrlParsingError.h" />
+    <ClInclude Include="HttpUrlHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

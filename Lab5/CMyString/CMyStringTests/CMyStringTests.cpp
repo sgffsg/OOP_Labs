@@ -582,6 +582,30 @@ TEST_CASE("Getting iterators")
 	}
 }
 
+TEST_CASE("Getting reverse iterators")
+{
+	WHEN("rbegin")
+	{
+		CMyString str("Some");
+		auto iter = str.rbegin();
+		THEN("Will get iterator to first symbol")
+		{
+			CHECK(*iter == 'm');
+		}
+	}
+
+	WHEN("rend")
+	{
+		CMyString str("Some");
+		auto iter = str.rend();
+		iter--;
+		THEN("Will get iterator to first symbol")
+		{
+			CHECK(*iter == 'S');
+		}
+	}
+}
+
 TEST_CASE("Increament iterator")
 {
 	WHEN("pre ++")
@@ -608,6 +632,32 @@ TEST_CASE("Increament iterator")
 	}
 }
 
+TEST_CASE("Decreament iterator")
+{
+	WHEN("pre --")
+	{
+		CMyString str("Some text");
+		auto iter = str.end();
+		--iter;
+		THEN("New iter will point to second elt")
+		{
+			CHECK(*iter == 'x');
+		}
+	}
+
+	WHEN("post --")
+	{
+		CMyString str("Some text");
+		auto iter = str.end();
+		iter--;
+
+		THEN("New iter will point to second elt")
+		{
+			CHECK(*iter == 'x');
+		}
+	}
+}
+
 TEST_CASE("Change symbol by iterator")
 {
 	WHEN("Success with not const string")
@@ -618,6 +668,23 @@ TEST_CASE("Change symbol by iterator")
 		THEN("Symbol will change")
 		{
 			CHECK(strcmp(str.GetStringData(), "Fome text") == 0);
+		}
+	}
+}
+
+TEST_CASE("For")
+{
+	WHEN("Success with not const string")
+	{
+		const CMyString cstr("World");
+
+		auto iter = cstr.cbegin();
+		auto iter2 = iter;
+
+		for (iter; iter != cstr.cend(); ++iter)
+		{
+			CHECK(*iter == *iter2);
+			iter2++;
 		}
 	}
 }

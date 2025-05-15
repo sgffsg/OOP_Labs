@@ -49,11 +49,9 @@ public:
 	using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
 	iterator begin() noexcept;
-	const_iterator begin() const noexcept;
 	const_iterator cbegin() const noexcept;
 
 	iterator end() noexcept;
-	const_iterator end() const noexcept;
 	const_iterator cend() const noexcept;
 
 	reverse_iterator rbegin() noexcept;
@@ -66,6 +64,7 @@ private:
 	size_t m_length;
 	size_t m_capacity;
 	char* m_symbols;
+
 };
 
 #endif // CMYSTRING_H
