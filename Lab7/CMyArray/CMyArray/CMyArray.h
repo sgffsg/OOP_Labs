@@ -164,6 +164,21 @@ public:
 		return *this;
 	}
 
+	template <typename U>
+	CMyArray& operator=(const CMyArray<U>& other)
+	{
+		CMyArray temp;
+		temp.Resize(other.GetCount());
+
+		for (size_t i = 0; i < other.GetCount(); ++i)
+		{
+			temp.AddToBack(static_cast<T>(other[i]));
+		}
+
+		Swap(temp);
+		return *this;
+	}
+
 private:
 	size_t m_count;
 	size_t m_capacity;
